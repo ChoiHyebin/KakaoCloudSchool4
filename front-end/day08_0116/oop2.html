@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oop2</title>
+    <script>
+        // 2. 생성자 함수 패턴의 객체 생성 = ES5
+        // ClassType pobj = new ClassType();
+        let x = 200;
+        function Player() { // window 메소드
+            let x = 100;
+            for(var i = 0; i< 5; i++){
+                document.write("<h1>" + i + "</h1>");
+            }
+            document.write("<h1>i = " + i + "</h1>"); // let i로 선언시 error
+        }
+        Player();
+        // document.write("<h1>function out: i = " + i + "</h1>");
+
+        function Player2() {
+            this.x = 100;
+            this.y = 200;
+            this.myShqpe = 'Player';
+            this.display = function() {
+                let color = 'red'; // 지역변수
+                document.write('x = ' + this.x);
+                document.write(', y = ' + this.y);
+                document.write(', myShape = ' + this.myShqpe);
+                document.write(', color = ' + color);
+                document.write('<hr>');
+            }
+        }
+        // Player2();
+
+        let pobj = new Player2(); // ES5의 객체 생성 방식
+        pobj.display(); // this
+
+        let pobj2 = new Player2();
+        pobj2.x = 50;
+        pobj2.display(); // this
+
+
+        // 예제 추가
+        function Person(arg) {
+            this.name = arg;
+            this.getName = function() {
+                return this.name;
+            }
+            this.setName = function(value) {
+                this.name = value;
+            }
+        }
+        let me = new Person('빈');
+        console.log(me.getName());
+
+        let you = new Person("정효");
+        console.log(you.getName());
+        
+        // me.display = function() {
+        //     window.alert("display");
+        // }
+        // me.display();
+        // you.display(); // error
+
+        Person.prototype.display = function() {
+            console.log("display: " + this.name);
+        }
+        me.display();
+        you.display();
+
+        // 보완된 코드
+        function Person2(arg){
+            this.name = arg;
+        }
+        Person2.prototype.getName = function() {
+            return this.name;
+        }
+        Person2.prototype.setName = function(value) {
+            this.name = value;
+        }
+        let p1 = new Person2('비니');
+        p1.display = function() {
+            
+        }
+        let p2 = new Person2('쩡요');
+        console.log(p1.getName());
+        console.log(p2.getName());
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

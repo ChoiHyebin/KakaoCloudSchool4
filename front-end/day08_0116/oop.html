@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oop</title>
+    <script>
+        // 1. 객체 선언 = 객체 리터럴(객체 즉시 생성)
+        var pobj = {
+            x: 100,
+            y: 200,
+            myShape: 'Player',
+            display: function() {
+                var x = 10;
+                document.write("<h1>" + this.x + ", " + this.y + " = " + this.myShape + "</h1>");
+            }
+        };
+
+        var pobj2 = {
+            x: 300,
+            y: 400,
+            myShape: 'Player2',
+            display: function() {
+                document.write("<h1>" + this.x + ", " + this.y + " = " + this.myShape + "</h1>");
+            }
+        };
+
+        pobj.display();
+        pobj2.display();
+        // 실행 도중 객체의 구성 요소를 동적으로 추가, 삭제, 변경 모두 가능
+
+        pobj2.changeColor = function() {
+            document.write('<h1 style = "color:pink">' + this.myShape + '</h1>');
+        };
+
+        pobj2.changeColor(); // 동적으로 추가
+        // pobj.changeColor(); => error
+        pobj2.changeColor = null;
+        pobj2.changeColor();
+    </script>
+</head>
+<body>
+    <div class="container">
+        
+    </div>
+</body>
+</html>

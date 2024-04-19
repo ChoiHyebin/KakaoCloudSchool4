@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oop3</title>
+    <script>
+        function Person(arg) {
+            this.name = arg;
+        }
+
+        // ES5 => class
+        function Player() {
+            this.x = 0;
+        }
+
+        // Person.prototype.setName = function(value) {
+        //     this.name = value;
+        // }
+        Function.prototype.method = function(name, func) { // java의 static과 비슷함
+            this.prototype[name] = func;
+        }
+        // Person.prototype.setName = function(value) {
+
+        // }
+        Person.method("setName", function(value) {
+            this.name = value;
+        })
+        Person.method("getName", function() {
+            return this.name;
+        })
+
+        var man = new Person("남자");
+        var woman = new Person("여자");
+
+        console.log(man.getName());
+        console.log(woman.getName());
+
+        Player.method();
+        var p1 = new Player();
+        var p2 = new Player();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

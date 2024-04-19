@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>movie_openAPI</title>
+    <script src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+    <script>
+        var urlAddr = "https://kobis.or.kr/kobisopenapi/webservice/rest/boxoffice/searchDailyBoxOfficeList.json?key=1e923dd89ec327e869576a59cb3939cd&targetDt=20240110&itemPerPage=5";
+
+        $.ajax({
+            type: "GET",
+            url: urlAddr,
+            dataType: "json", // 어떤 parser가 움직일지 미리 정의해줘야 함
+            success: jsonParser
+        });
+
+        function jsonParser(data) {
+            // console.log("typeof(data):", typeof(data));
+            // console.log(data);
+            var list = data.boxOfficeResult.dailyBoxOfficeList;
+            // var list2 = data["boxOfficeResult"]["dailyBoxOfficeList"];
+            $(list).each(function(i, value) {
+                // console.log(i);
+                // console.log(value.movieNm);
+                $('#listv').append("<li>"+value.movieNm+"</li>");
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>영화 정보</h1>
+    <ul id="listv">
+    </ul>
+</body>
+</html>

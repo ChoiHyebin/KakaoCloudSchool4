@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.css" />
+	<script src="https://code.jquery.com/jquery-1.7.1.min.js"></script>
+	<script src="https://code.jquery.com/mobile/1.4.5/jquery.mobile-1.4.5.min.js"></script>
+    <script>
+        // jQuery('document'.readufunction());
+
+        var xml;
+        $(function() {
+            $.ajax({
+                type: "GET",
+                url: "test.xml",
+                dataType: "xml",
+                success: xmlParser
+            });
+
+            function xmlParser (data){
+                xml = data;
+                $(xml).find("Employee").each(function() {
+                    var email = $(this).find("email").text();
+                    var name = $(this).attr("name");
+
+                    console.log(email);
+                    console.log(name);
+                });
+            }
+        });
+    </script>
+</head>
+<body>
+    <div data-role="page">
+        <div data-role="header">
+            <h1>사원 정보 확인</h1>
+        </div>
+        <div data-role="content">
+            <ul id="list" data-role="listview" data-filter="true" data-inset="true">
+                <li><a href=""><img src="./img/FF.png" alt=""></a></li>
+                <li><a href=""><img src="./img/google.png" alt=""></a></li>
+                <li><a href=""><img src="./img/ie.png" alt=""></a></li>
+                <li><a href=""><img src="./img/Opera.png" alt=""></a></li>
+                <li><a href=""><img src="./img/Safari.png" alt=""></a></li>
+            </ul>
+        </div>
+        <div data-role="footer">
+            Footer
+        </div>
+    </div>
+</body>
+</html>

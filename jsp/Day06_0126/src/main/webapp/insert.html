@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>insert</title>
+<script src="ckeditor/ckeditor.js"></script>
+<title>게시글 작성</title>
+<style>
+	#title, #writer{
+		width: 100%;
+		border: none;
+		border-bottom: 1px solid black;
+	}
+	#title:focus{
+		outline: none;
+	}
+	.ck-editor__editable { height: 400px; }
+</style>
+<script src="https://cdn.ckeditor.com/ckeditor5/29.0.0/classic/ckeditor.js"></script>
+</head>
+<body>
+    <h2>게시글 작성</h2>
+    <form action="insertProcess.jsp" method="post">
+        <label for="title">제목:</label><br>
+        <input type="text" id="title" name="title"><br>
+        <label for="writer">작성자:</label>
+        <input type="text" id="writer" name="writer"><br>
+        <label for="content">내용:</label><br>
+        <textarea id="content" name="content"></textarea><br>
+        <input type="submit" value="제출">
+    </form>
+    <script>
+    	ClassicEditor.create( document.querySelector( '#content' ));
+    </script>
+</body>
+</html>

@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oop3_1</title>
+    <script>
+        // Person 객체 상속해서 Student 객체 만들기
+        var person = {
+            name: "bin",
+            getName: function() {
+                return this.name;
+            },
+            setName: function(arg) {
+                this.name = arg;
+            }
+        };
+
+        function create_object(parent) {
+            function F() {};
+            F.prototype = parent;
+            return new F();
+        }
+
+        function extend(child, xprop) {
+            for(let key in xprop) {
+                console.log(key);
+                child[key] = xprop[key];
+            }
+
+            return child;
+        }
+
+        var addProp = {
+            // student에서 추가하고자 하는 속성이나 메소드
+            setAge: function(age) {
+                this.age = age;
+            },
+            getAge: function() {
+                return this.age;
+            }
+        };
+
+        // prototype 기반의 상속 활용(student가 자식)
+        var student = create_object(person); // person이 가진 모든 정보를 공유해서 받음
+        extend(student, addProp);
+
+        student.setAge(25);
+        console.log(student.getAge());
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

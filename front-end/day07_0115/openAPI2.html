@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>메이플스토리 캐릭터 정보</title>
+    <link href="./image/maple.png" rel="shortcut icon" type="image/x-icon">
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        .container{
+            width: 500px;
+            margin: auto;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        h1{
+            padding-bottom: 10px;
+        }
+
+        .char-box{
+            display: flex;
+            width: 100%;
+        }
+        #character-input{
+            border: 1px solid gray;
+            padding: 5px;
+            width: 100%;
+        }
+        button{
+            width: 100px;
+            background-color: gray;
+            color: white;
+            cursor: pointer;
+        }
+
+        table {
+            width: 100%;
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        td {
+            border: 1px solid black;
+            padding: 10px;
+        }
+        .info {
+            background-color: lightyellow;
+        }
+    </style>
+    <script>
+        const API_KEY = "test_8a01731a518f170ea34ac4e928e9e01e62ad19fd66c14d3e39487addcb64a94b30fa8c35f6b9866e71eb8390d581b306";
+        const urlString = "https://open.api.nexon.com/maplestory/v1/character/basic?ocid=e0a4f439e53c369866b55297d2f5f4eb&date=2023-12-21";
+        const answer = fetch(urlString, {
+            headers:{
+            "x-nxopen-api-key": API_KEY
+            }
+        })
+        .then(response => response.json())
+        .then(data => 
+        {
+            // document.getElementById('image').innerHTML = "";
+            document.getElementById('image').innerHTML = "<img src='https://open.api.nexon.com/static/maplestory/Character/HDLDFHOOPBEBJBCFGPJIADFOMCOHAHLBBNFJGDENBFADHHPMBKKIDKBDNNGDBOJLMFIFFDDHFGOIMDIIAHKHGLDIELPAAHCGCCBKBFGKFOCMONOIKEMAOABKIBEBPHAAKADNLOMJEEHMDDDBJMELIINOAGIBEHMIPIBJKMJMOKAEGAJFNFFEJCGDDAFBBNFLODBGEEMHGNMKIPKHFIFBDCOIBMEDCAALIDLEEHIPCMNBCPDCAJHFKJABPHCCPHII.png' />";
+            document.getElementById('nickname').innerText = data.character_name;
+            document.getElementById('class').innerText = data.character_class;
+            document.getElementById('level').innerText = data.character_level;
+            document.getElementById('world').innerText = data.world_name;
+            document.getElementById('guild').innerText = data.character_guild_name;
+
+            console.log(data);
+            console.log(data.character_image);
+        })
+        .catch(error => console.error(error));
+    </script>
+</head>
+<body>
+    <a href=""></a>
+    <div class="container">
+        <h1>캐릭터 정보</h1>
+        <div class="char-box">
+            <input type="text" id="character-input" placeholder="캐릭터 이름을 입력하세요">
+            <button onclick="fetchCharacter()">검색</button>
+        </div>
+        <table>
+            <tr>
+                <td colspan="2" id="image"></td>
+            </tr>
+            <tr>
+                <td class="info">닉네임</td>
+                <td id="nickname"></td>
+            </tr>
+            <tr>
+                <td class="info">직업</td>
+                <td id="class"></td>
+            </tr>
+            <tr>
+                <td class="info">레벨</td>
+                <td id="level"></td>
+            </tr>
+            <tr>
+                <td class="info">월드</td>
+                <td id="world"></td>
+            </tr>
+            <tr>
+                <td class="info">길드</td>
+                <td id="guild"></td>
+            </tr>
+        </table>
+    </div>
+</body>
+</html>

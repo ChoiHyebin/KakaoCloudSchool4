@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oop5</title>
+    <script>
+        class Player { // function Player() ==> Player.prototype
+            constructor(name) {
+                this.name = name;
+            }
+            display() {
+                // window.alert("Player: " + this.name);
+            }
+        }
+
+        // let pobj = new Player("빈");
+        // pobj.display();
+
+        document.write(typeof(Player) + "<br>");
+        document.write(Player === Player.prototype.constructor);
+
+        Player.prototype.display();
+
+        // document.write("<h1>" + "</h1>");
+
+        let User = class {
+            sayHi() {
+                document.write("<br>User: Hi");
+            }
+        }
+        new User().sayHi();
+
+        function makeClass(phrase) {
+            return class {
+                sayHi() {
+                    alert(phrase);
+                }
+            }
+        }
+
+        class User3 {
+            age = 100;
+
+            constructor(name) {
+                // setter를 활성화
+                this.name = name;
+            }
+        }
+
+        class User4 {
+        }
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

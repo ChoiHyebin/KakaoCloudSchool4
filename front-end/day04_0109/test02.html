@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>function</title>
+    <script>
+        // 선언적 함수
+        function display() {
+            // var hello = "display..";
+            // document.write("<h1>" + hello + "</h1>");
+
+            // 이름이 홍길동이면 방문글을 등록한다는 메시지를 출력하고,
+            // 홍길동이 아니면 textarea에 문자열을 전부 삭제하도록 하시오.
+            var snameObj =  window.document.getElementById('sname');
+            var contentObj =  window.document.getElementById('content');
+
+            if(snameObj.value == "홍길동"){
+                window.alert("등록");
+            }
+            else {
+                // contentObj.innerHTML="<h1>새로</h1>";
+                contentObj.innerHTML = "";
+                // contentObj.innerHTML = "<h1 onclick=''>새로</h1>";
+            }
+        }
+
+        // display(); // 호출
+
+        function display(x){
+            for(let i = 0; i < arguments.length; i++) {
+                console.log("arguments: ", arguments[i]);
+            }
+            return arguments;
+        }
+        var sesult = window.display(10, 20, 30, 40, 50, 60, 70);
+
+        window.display(10, 20);
+    </script>
+</head>
+<body>
+    <form>
+        이름: </label><input type="text" value="" id="sname"><br>
+        내용: <textarea name="" id="content" cols="30" rows="10">Hello</textarea><br>
+        <input type="button" value="방문글 등록" onclick="display()">
+    </form>
+</body>
+</html>

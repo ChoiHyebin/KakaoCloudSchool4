@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>test2</title>
+    <script>
+        function ask(question, yes, no) {
+            let answer = window.prompt(question);
+            if(answer) {
+                yes();
+            }
+            else {
+                no();
+            }
+        }
+
+        function showOk() {
+            alert("동의하셨습니다.");
+        }
+
+        function showCancel() {
+            alert("취소 버튼을 누르셨습니다.");
+        }
+
+        // 사용법: 함수 showOk와 showCancel이 ask 함수의 인수로 전달됨
+        ask("동의하십니까?", showOk, showCancel);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

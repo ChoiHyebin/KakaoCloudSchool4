@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>object</title>
+    <script>
+        // ES3
+        var global_a = "global_a";
+        var a = "global_a";
+        function display() { // outer function
+            var out = "Out Function";
+            var a = "Out Function";
+            return (function() { // inner func
+                var inner = "Inner Function";
+                var a = "Inner Function";
+                // window.alert(inner);
+                document.write("<h1>" + a + "</h1>");
+                return 4;
+            });
+        }
+
+        document.write("a: " + a);
+
+        // display()();
+
+        // var result = display();
+        // result();
+
+        // var result2 = result();
+        // result2 = result2 + 3;
+        // console.log(result2);
+        
+        //let
+        let userName = "John";
+        function showMessage() {
+            let userName = "Bob";
+            let message = "Hello";
+            // alert(message);
+        }
+        // alert(userName); // John -> John
+        
+        showMessage();
+        // alert(userName); // Bob -> John
+
+        let func = function(ar1=1, ar2=2, ...ar3) {
+            // console.log(ar1 + ", " + ar2);
+            // console.log(ar3);
+            return (ar1 + ar2);
+        };
+
+        let mySum = (ar1=1, ar2=2, ...ar3) => ar1 + ar2;
+        window.alert(mySum(100, 200));
+
+        let mySum2 = (ar1=1, ar2=2, ...ar3)=>{ // 블럭 있을 때 return 필수로 명시
+            return ar1 + ar2;
+        }
+        window.alert(mySum2(100, 200));
+
+        func();
+        func(10, 20, 30, 40);
+        func(ar1=60, ar2=100);
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

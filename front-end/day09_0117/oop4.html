@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>oop4</title>
+    <script>
+        function Person(arg) {
+            this.name = arg;
+        };
+
+        Person.prototype.setName = function(value) {
+            this.name = value;
+        }
+
+        Person.prototype.getName = function() {
+            return this.name;
+        }
+
+        // student: child
+        function Student(arg) {
+            Person.apply(this, arguments); // super(arg);
+        }
+
+        var you = new Person("어른");
+        console.log(you.getName());
+        // 상속
+        Student.prototype = you;
+
+        var s1 = new Student("학생1", "학생2");
+        // s1.setName("jun");
+        console.log(s1.getName()); // error
+    </script>
+</head>
+<body>
+    
+</body>
+</html>
